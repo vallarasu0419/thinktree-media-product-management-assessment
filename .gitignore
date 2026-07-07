@@ -1,0 +1,23 @@
+# ── Dependencies ──
+node_modules
+
+# ── Build output ──
+build
+
+# ── Environment / secrets ──
+.env
+.env.local
+.env.*.local
+
+# ── Logs ──
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── OS files ──
+.DS_Store
+Thumbs.db
+
+# ── Uploaded product images (written at runtime by multer, server-side) ──
+server/public/product-images/*
+!server/public/product-images/.gitkeep

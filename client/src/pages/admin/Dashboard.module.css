@@ -1,0 +1,112 @@
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.iconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.primary {
+  background: rgba(109, 40, 217, 0.12);
+  color: var(--color-primary);
+}
+.success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+.warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+.danger {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+.info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.statValue {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.quick {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+.quickTitle {
+  margin: 0 0 var(--space-4);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.quickRow {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
