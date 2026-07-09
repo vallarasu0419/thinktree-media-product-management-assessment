@@ -4,6 +4,7 @@ import styles from './Auth.module.css';
 import { useAuth } from '../context/AuthContext';
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
+import { getPasswordError } from '../utils/validators';
 
 function Login() {
   const { login } = useAuth();
@@ -26,7 +27,8 @@ function Login() {
   const validate = () => {
     const next = {};
     if (!form.email.trim()) next.email = 'Email is required';
-    if (!form.password) next.password = 'Password is required';
+    const passwordError = getPasswordError(form.password);
+    if (passwordError) next.password = passwordError;
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -97,9 +99,6 @@ function Login() {
 
         <p className={styles.footer}>
           Don&apos;t have an account? <Link to="/register">Create one</Link>
-        </p>
-        <p className={styles.hint}>
-          Demo admin — <strong>admin@example.com</strong> / <strong>Admin@123</strong>
         </p>
       </div>
     </div>

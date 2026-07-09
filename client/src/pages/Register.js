@@ -4,6 +4,7 @@ import styles from './Auth.module.css';
 import { useAuth } from '../context/AuthContext';
 import CustomInput from '../components/CustomInput/CustomInput';
 import CustomButton from '../components/CustomButton/CustomButton';
+import { getPasswordError } from '../utils/validators';
 
 function Register() {
   const { register } = useAuth();
@@ -31,8 +32,8 @@ function Register() {
     if (!form.name.trim()) next.name = 'Name is required';
     if (!form.email.trim()) next.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = 'Enter a valid email';
-    if (!form.password) next.password = 'Password is required';
-    else if (form.password.length < 6) next.password = 'Minimum 6 characters';
+    const passwordError = getPasswordError(form.password);
+    if (passwordError) next.password = passwordError;
     if (form.confirm !== form.password) next.confirm = 'Passwords do not match';
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -49,7 +50,7 @@ function Register() {
         email: form.email.trim(),
         password: form.password,
       });
-      navigate('/admin', { replace: true });
+      navigate('/', { replace: true });
     } catch (err) {
       const msg =
         (err.response && err.response.data && err.response.data.message) ||
@@ -68,7 +69,7 @@ function Register() {
             <i className="fa-solid fa-user-plus" aria-hidden="true" />
           </span>
           <h1 className={styles.title}>Create account</h1>
-          <p className={styles.subtitle}>Register a new admin account</p>
+          <p className={styles.subtitle}>Register a new account</p>
         </div>
 
         {apiError && (
@@ -106,7 +107,7 @@ function Register() {
             type="password"
             value={form.password}
             onChange={onChange}
-            placeholder="At least 6 characters"
+            placeholder="Create a password"
             error={errors.password}
             icon="fa-solid fa-lock"
             required

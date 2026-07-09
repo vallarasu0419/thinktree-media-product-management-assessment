@@ -3,10 +3,13 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { useAuth } from '../../context/AuthContext';
 
+const ADMIN_ROLES = ['super_admin', 'admin', 'staff'];
+
 function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const isAdmin = ADMIN_ROLES.includes(user?.role);
 
   const close = () => setOpen(false);
 
@@ -42,15 +45,14 @@ function Navbar() {
           <NavLink to="/" className={linkClass} onClick={close} end>
             Home
           </NavLink>
-          <NavLink to="/products" className={linkClass} onClick={close}>
-            Products
-          </NavLink>
 
           {isAuthenticated ? (
             <>
-              <NavLink to="/admin" className={linkClass} onClick={close}>
-                Dashboard
-              </NavLink>
+              {isAdmin && (
+                <NavLink to="/admin" className={linkClass} onClick={close}>
+                  Dashboard
+                </NavLink>
+              )}
               <div className={styles.userBox}>
                 <span className={styles.userName}>
                   <i className="fa-solid fa-user-shield" aria-hidden="true" />

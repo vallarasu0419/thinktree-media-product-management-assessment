@@ -4,5 +4,5 @@ npm-debug.log*
 .DS_Store
 
 # Uploaded product images (written at runtime by multer)
-public/product-images/*
-!public/product-images/.gitkeep
+# public/product-images/*
+# !public/product-images/.gitkeep

@@ -12,9 +12,7 @@ function Footer() {
           </span>
           <span>ProdManage</span>
         </div>
-        <p className={styles.copy}>
-          © {year} ProdManage. Built with React, Express &amp; MySQL.
-        </p>
+        <p className={styles.copy}>© {year} ProdManage.</p>
       </div>
     </footer>
   );

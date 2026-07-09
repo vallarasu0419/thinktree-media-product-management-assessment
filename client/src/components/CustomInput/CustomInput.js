@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React, { useId, useState } from 'react';
 import styles from './CustomInput.module.css';
 
 /**
@@ -23,6 +23,9 @@ function CustomInput({
 }) {
   const autoId = useId();
   const id = name || autoId;
+  const [showPassword, setShowPassword] = useState(false);
+  const isPassword = type === 'password';
+  const inputType = isPassword && showPassword ? 'text' : type;
 
   return (
     <div className={`${styles.group} ${className}`}>
@@ -50,13 +53,24 @@ function CustomInput({
           <input
             id={id}
             name={name}
-            type={type}
+            type={inputType}
             value={value}
             onChange={onChange}
             placeholder={placeholder}
             className={styles.control}
             {...rest}
           />
+        )}
+        {isPassword && (
+          <button
+            type="button"
+            className={styles.toggle}
+            onClick={() => setShowPassword((s) => !s)}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            tabIndex={-1}
+          >
+            <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`} aria-hidden="true" />
+          </button>
         )}
       </div>
 

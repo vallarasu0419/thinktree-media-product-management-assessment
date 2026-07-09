@@ -19,5 +19,5 @@ yarn-error.log*
 Thumbs.db
 
 # ── Uploaded product images (written at runtime by multer, server-side) ──
-server/public/product-images/*
-!server/public/product-images/.gitkeep
+# server/public/product-images/*
+# !server/public/product-images/.gitkeep

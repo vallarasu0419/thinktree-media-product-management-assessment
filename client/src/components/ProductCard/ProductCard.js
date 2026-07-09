@@ -65,9 +65,6 @@ function ProductCard({ product }) {
               Out of stock
             </Badge>
           )}
-          <span className={styles.view}>
-            View <i className="fa-solid fa-arrow-right" aria-hidden="true" />
-          </span>
         </div>
       </div>
     </CustomCard>

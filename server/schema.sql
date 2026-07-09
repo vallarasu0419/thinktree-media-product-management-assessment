@@ -22,7 +22,7 @@ CREATE TABLE `users` (
   `name`           VARCHAR(100)    NOT NULL,
   `email`          VARCHAR(191)    NOT NULL,
   `password_hash`  VARCHAR(255)    NOT NULL,
-  `role`           ENUM('super_admin','admin','staff') NOT NULL DEFAULT 'admin',
+  `role`           ENUM('super_admin','admin','staff','user') NOT NULL DEFAULT 'user',
   `is_active`      TINYINT(1)      NOT NULL DEFAULT 1,
   `last_login_at`  DATETIME        NULL     DEFAULT NULL,
   `created_at`     TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -187,7 +187,15 @@ INSERT INTO `categories` (`name`, `slug`, `description`, `sort_order`) VALUES
 ('Electronics', 'electronics', 'Phones, laptops, accessories', 1),
 ('Clothing',    'clothing',    'Men, women and kids apparel',   2),
 ('Books',       'books',       'Fiction, non-fiction, academic', 3),
-('Home & Kitchen', 'home-kitchen', 'Appliances and home essentials', 4);
+('Home & Kitchen', 'home-kitchen', 'Appliances and home essentials', 4),
+('Sports & Fitness', 'sports-fitness', 'Gym gear, activewear and equipment', 5),
+('Toys & Games', 'toys-games', 'Toys, puzzles and board games', 6),
+('Beauty & Personal Care', 'beauty-personal-care', 'Skincare, haircare and grooming', 7),
+('Furniture', 'furniture', 'Living room, bedroom and office furniture', 8),
+('Groceries', 'groceries', 'Everyday essentials and pantry staples', 9),
+('Automotive', 'automotive', 'Car and bike accessories', 10),
+('Health & Wellness', 'health-wellness', 'Supplements and wellness products', 11),
+('Music & Instruments', 'music-instruments', 'Instruments and audio gear', 12);
 
 INSERT INTO `products`
   (`sku`, `name`, `slug`, `category_id`, `short_description`,

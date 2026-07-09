@@ -41,7 +41,7 @@ async function issueTokens(user, req) {
 
 // POST /api/auth/register
 const register = asyncHandler(async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password } = req.body;
 
   const [existing] = await pool.query('SELECT id FROM users WHERE email = ?', [email]);
   if (existing.length > 0) {
@@ -50,8 +50,8 @@ const register = asyncHandler(async (req, res) => {
 
   const passwordHash = await bcrypt.hash(password, 10);
   const [result] = await pool.query(
-    `INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)`,
-    [name, email, passwordHash, role || 'admin']
+    `INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, 'user')`,
+    [name, email, passwordHash]
   );
 
   const [rows] = await pool.query('SELECT * FROM users WHERE id = ?', [result.insertId]);

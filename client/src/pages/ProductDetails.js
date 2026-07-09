@@ -166,12 +166,6 @@ function ProductDetails() {
               <p>{product.description}</p>
             </div>
           )}
-
-          <Link to="/products" className={styles.backLink}>
-            <CustomButton variant="outline" icon="fa-solid fa-arrow-left">
-              Back to products
-            </CustomButton>
-          </Link>
         </div>
       </div>
     </div>

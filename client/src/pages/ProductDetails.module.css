@@ -160,10 +160,6 @@
   white-space: pre-line;
 }
 
-.backLink {
-  display: inline-block;
-}
-
 @media (max-width: 860px) {
   .layout {
     grid-template-columns: 1fr;

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styles from './ProductList.module.css';
 import { productApi } from '../api/productApi';
 import { categoryApi } from '../api/categoryApi';
@@ -17,13 +18,15 @@ const SORT_OPTIONS = [
 ];
 
 function ProductList() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1, total: 0 });
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState(searchParams.get('category') || '');
   const [sort, setSort] = useState('newest');
   const [inStock, setInStock] = useState(false);
   const [page, setPage] = useState(1);
@@ -64,8 +67,10 @@ function ProductList() {
     setPage(1);
   };
   const onCategory = (e) => {
-    setCategory(e.target.value);
+    const value = e.target.value;
+    setCategory(value);
     setPage(1);
+    setSearchParams(value ? { category: value } : {});
   };
   const onSort = (e) => setSort(e.target.value);
   const onStock = () => {

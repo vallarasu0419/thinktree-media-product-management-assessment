@@ -73,6 +73,7 @@
 }
 
 .navActive:hover {
+  background: var(--gradient-primary);
   color: #fff;
 }
 

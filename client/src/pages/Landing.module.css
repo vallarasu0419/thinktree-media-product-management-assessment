@@ -60,6 +60,22 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.perks {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+.perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .heroArt {
   position: relative;
   width: 300px;
@@ -142,6 +158,9 @@
     margin-right: auto;
   }
   .actions {
+    justify-content: center;
+  }
+  .perks {
     justify-content: center;
   }
   .title {
